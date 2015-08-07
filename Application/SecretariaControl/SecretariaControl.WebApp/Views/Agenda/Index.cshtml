@@ -1,0 +1,125 @@
+﻿@model SecretariaControl.WebApp.Models.Agenda
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_Layout.cshtml";
+    var usuarioLogado = User.UsuarioLogado();
+}
+
+<div id="teste" class="row wrapper border-bottom white-bg page-heading">
+
+    <div class="col-lg-12">
+
+        <h2>Agenda, @Model.Gerente.Nome</h2>
+
+        <div class="breadcrumb" style="background-color:white">
+            <a class="btn btn-success" href="/Agenda/@Model.Id/Compromisso"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add Compromisso </a>
+            @if (usuarioLogado.Perfil == SecretariaControl.WebApp.Models.Perfil.Gerente)
+            {
+                <div class="actions pull-right">
+                    <a class="btn btn-danger" href="/Agenda/@Model.Id/Secretaria"><span class=" glyphicon glyphicon-plus"></span> Secretária</a>
+
+                </div>
+            }
+        </div>
+
+        <div class="col-lg-2">
+
+        </div>
+
+    </div>
+
+    <div class="content">
+        <div id="pad-wrapper">
+
+
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color: #3E4651; color:white"><strong>COMPROMISSO</strong></div>
+                    <div class="panel-body">
+
+                        <div class="ibox-content">
+                            <div class="feed-activity-list">
+                                @if (Model.Compromissos != null && Model.Compromissos.Count > 0)
+                                {
+                                    <div class="feed-element">
+
+                                        @foreach (var item in Model.Compromissos)
+                                        {
+
+                                            <div class="media-body ">
+                                                <small class="pull-right text-navy"><span class="glyphicon glyphicon-user"> </span><span class="label label-warning">@item.Contatos.Count()</span></small>
+
+                                                <strong><a href="@Url.Action("Detalhe", new { id = item.Id })">@item.Descricao</a></strong>
+                                                <br />
+
+                                                <a href="http://maps.google.com/?q=@item.Local" target="_blank" style="color:rgb(129, 134, 134);" class=" txt-local"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> @item.Local</a>
+                                                <br />
+                                                <small class="text-muted"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> @item.DataCompromisso.ToString("dddd, d \\de MMMM \\de yyyy, HH:mm") </small>
+                                                <br />
+                                                <div class="actions">
+                                                    <a class="btn btn-xs btn-success" href="/Agenda/@Model.Id/Compromisso/@item.Id">Editar </a>
+                                                    <a class="btn btn-xs btn-danger" href="@Url.Action("DeletarCompromisso", "Agenda", new { idCompromisso = item.Id, idGerente = item.IdGerente })">Deletar</a>
+                                                </div>
+                                            </div>
+                                            <hr />
+                                        }
+
+                                    </div><!-- feed-element-->
+
+                                }
+                                else
+                                {
+                                    <div class="feed-element">
+                                        <div class="media-body ">
+                                            <h2>Sr(a). @Model.Gerente.Nome, você ainda não tem nenhum compromisso</h2>
+                                        </div>
+                                    </div><!-- feed-element-->
+                                }
+                            </div><!--feed-activity-list-->
+                        </div><!-- feed-activity-list -->
+
+                    </div><!--ibox-content -->
+
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="background-color: #3E4651; color:white"><strong>Busca Rápida</strong></div>
+                <div class="panel-body">
+
+                    <div class="ibox-content">
+                        <div class="feed-activity-list">
+                            <div class="feed-element">
+                                <div class="media-body ">
+                                    <div class="col-md-12">
+                                        
+                                            @using (Html.BeginForm("Compromisso", "Agenda"))
+                                            {
+                                                <div class="input-group">
+                                                    <input hidden name="idAgenda" value="@Model.Gerente.Id" />
+                                                    <input type="text" placeholder="Search" class="input-sm form-control" name="descricao"> <span class="input-group-btn">
+                                                        <button type="submit" class="btn btn-sm btn-warning"> Go!</button>
+                                                    </span>
+                                                </div>
+                                            }
+                                            
+                                    </div>
+                                </div>
+
+
+                            </div><!-- feed-element-->
+                        </div><!--feed-activity-list-->
+
+                    </div><!-- feed-activity-list -->
+
+                </div><!--ibox-content -->
+
+            </div>
+        </div>
+
+
+
+        <div class="clearfix"></div>
+    </div>
+</div>

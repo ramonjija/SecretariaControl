@@ -1,0 +1,17 @@
+﻿.jumbotron {
+    text-align:center;
+}
+
+.form-contato {
+    margin:0 auto;
+    width:50%;
+}
+
+.msgHide{
+    display:none;
+}
+
+.msgShow{
+    display:block;
+    padding-top: 5px;
+}

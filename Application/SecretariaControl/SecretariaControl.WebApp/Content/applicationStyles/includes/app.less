@@ -1,0 +1,112 @@
+﻿@import "variables";
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    vertical-align: middle;
+    border-radius: 0;
+    background-color: @flat-gray-dark;
+    border-color: @flat-gray-dark;
+    border: 0;
+    height: 60px;
+
+    .container-fluid {
+        height: 100%;
+    }
+
+    .navbar-header {
+        line-height: 2em;
+        /*border-right:3px dashed @flat-burnt-red;*/
+        height: 100%;
+
+        h2 {
+            margin: 0;
+        }
+
+        .brand-name {
+            color: white;
+            font-weight: 600;
+
+            .brand-name-2nd-color {
+                color: @flat-burnt-red;
+            }
+        }
+    }
+
+    .navbar-nav {
+        a.dropdown-toggle {
+            /*border-left:3px dashed @flat-burnt-red;*/
+            padding: 5px 10px;
+            height: 100%;
+
+            img {
+                width: 48px;
+                height: 48px;
+                border: 5px solid @flat-calm-green;
+            }
+
+            &:hover, &:focus, &:active, &[aria-expanded="true"] {
+                background-color: @flat-gray-dark;
+                color: @flat-burnt-red;
+
+                img {
+                    border: 0 solid @flat-calm-green;
+                }
+            }
+        }
+
+        .dropdown-menu {
+            background-color: fade(@flat-gray-dark, 75%);
+        }
+    }
+
+    .nav {
+        height: 100%;
+
+        li {
+            height: 100%;
+
+            a {
+                height: 100%;
+                color: @gray-lighter;
+                font-size: 20px;
+                /*font-weight: 400;*/
+                vertical-align: middle;
+                line-height: 1.8em;
+
+                &:hover, &:focus, &:active {
+                    background-color: @flat-burnt-red;
+                    color: @gray-lighter;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    text-align: center;
+    color: @gray-light;
+}
+
+textarea {
+    resize: none;
+}
+
+.no-content {
+    background-color: lighten(@flat-gray-light, 35%);
+    border-radius: 6px;
+    width: 100%;
+    height: 600px;
+    padding: 160px 10px;
+
+    p {
+        color: @flat-gray-light;
+        font-size: 60px;
+        font-weight: 600;
+        text-align: center;
+    }
+}

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SecretariaControl.WebApp.Models.Agenda>
+
+
+@{
+    ViewBag.Title = "Secretária Control";
+    Layout = "~/Views/_Layout.cshtml";
+    var loggedUser = User.UsuarioLogado();    
+}
+
+<div class="col-sm-12 home-page-title">
+    <h2 class="col-sm-9">Seja bem-vindo(a), @loggedUser.Nome</h2>
+    <div class="col-sm-3">
+        <div class="btn-group pull-right">
+            <a href="/Contato/Insert" type="button" class="btn btn-success"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Contato</a>
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Ativar Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="/Contato/List">Listar Contatos</a></li>
+            </ul>
+        </div>
+    </div>
+    <hr class="col-sm-12" />
+</div>
+
+<div class="row">
+
+
+
+    @if (!Model.IsNullOrEmpty())
+    {
+        <div class="card-container">
+            @foreach (var agenda in Model)
+            {
+                <div class="col-xs-6 col-sm-4">
+                    <a class="card animate-all-fast" href="/agenda/Index/@agenda.Gerente.Id">
+                        <div class="col-sm-12">
+                            <span class="badge pull-right pull-right">@agenda.Compromissos.Count</span>
+                        </div>
+                        <div class="col-sm-4">
+                            <img src="@agenda.Gerente.Foto" class="img-rounded img-md-fluid pull-left" />
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="col-sm-12 pull-left">
+                                <span class="font-sm-title pull-left">@agenda.Gerente.Nome</span>
+                                <span class="font-md-content pull-left">@agenda.Gerente.Telefone</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="empty-card-container">
+            <div class="col-sm-12">
+                <span class="glyphicon glyphicon-list-alt font-lg-title col-sm-12" aria-hidden="true"></span>
+                <span class="font-lg-title col-sm-12">Você Ainda Não Possui Nenhuma Agenda</span>
+            </div>
+        </div>
+    }
+
+</div>
+
+

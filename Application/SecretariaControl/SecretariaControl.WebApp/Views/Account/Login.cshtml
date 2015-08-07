@@ -1,0 +1,45 @@
+﻿@model SecretariaControl.WebApp.Models.UsuarioLogin
+
+@{
+    /* REFERÊNCIAS
+     *  http://dailydesignnotes.com/wp-content/uploads/2013/02/Wfmhl.png
+     *  http://codepen.io/motorlatitude/pen/JFkro
+     */
+
+
+    ViewBag.Title = "Login";
+    Layout = "~/Views/_RawLayout.cshtml";
+}
+
+
+<div class="login-form-bg">
+    <div class="login-form-bg-image"></div>
+</div>
+<div class="jumbotron login-form">
+    <div class="login-form-container">
+        <div class="col-sm-6">
+            <div class="login-title">
+                <h1>Secretária<span class="login-title-2nd-color">Control</span></h1>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <form action="/account/login" method="post">
+
+                <h2>Login</h2>
+                <hr />
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                    <input type="text" class="form-control" name="email" placeholder="Digite seu e-mail" value="@Model.Email">
+                </div>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+                    <input type="password" class="form-control" name="senha" placeholder="Digite sua senha" value="@Model.Senha">
+                </div>
+
+                <div class="col-sm-12 text-center">
+                    <button type="submit" class="btn btn-lg btn-success">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

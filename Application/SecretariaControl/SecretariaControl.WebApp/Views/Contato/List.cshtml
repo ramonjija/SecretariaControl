@@ -1,0 +1,108 @@
+﻿<!--model IEnumerable<SecretariaControl.WebApp.Models.Contato>-->
+@model SecretariaControl.WebApp.Models.ViewModels.CompromissoViewModel
+
+@{
+    ViewBag.Title = "Lista de Contatos";
+    Layout = "~/Views/_Layout.cshtml";
+    var ModelSorted = Model.Contatos;
+
+}
+<h2>Lista de Contatos</h2>
+
+<p>
+    <a href="/Contato/Insert" type="button" class="btn btn-success"><span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Adicionar Contato</a>
+    <!--Html.ActionLink("Criar Novo Contato", "Index", "CadastroContato")-->
+</p>
+<!--<table class="table table-bordered table-hover table-bordered">-->
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Contatos</h3>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-responsive">
+            <tr class="active">
+                <th>
+                    @Html.DisplayNameFor(model => model.Contatos[0].Descricao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contatos[0].Telefone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contatos[0].Email)
+                </th>
+                <th>
+                    Gerente
+                </th>
+                <th>
+                    Ações
+                </th>
+            </tr>
+            @if (Model != null)
+            {
+                var gerentes = SecretariaControl.WebApp.Models.GerenteFactory.GetGerente();
+                foreach (var item in ModelSorted)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Telefone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @{
+
+                    var gerenteSelecionado = gerentes.FirstOrDefault(g => g.Id == item.IdGerente);
+                    if (gerenteSelecionado != null)
+                    {
+                        <a href="/Contato/List/@gerenteSelecionado.Id">@gerenteSelecionado.Nome</a>
+                    }
+
+                            }
+
+                        </td>
+                        <td>
+                            @{
+                                List<SecretariaControl.WebApp.Models.Contato> contactList = new List<SecretariaControl.WebApp.Models.Contato>();
+
+                                if (User.UsuarioLogado().Perfil == SecretariaControl.WebApp.Models.Perfil.Secretaria)
+                                {
+                                    var agendas = SecretariaControl.WebApp.Models.AgendaFactory.GetAgendasByIdSecretaria(User.UsuarioLogado().Id);
+                                    foreach (var agenda in agendas)
+                                    {
+                                        foreach (var cont in agenda.Contatos)
+                                        {
+                                            contactList.Add(cont);
+                                        }
+                                    }
+                                    if (!contactList.Where(c => c.Id == item.Id).IsNullOrEmpty())
+                                    {
+                                        @Html.ActionLink("Deletar", "DeletarContato", new { idContato = item.Id });
+                                        @:  |  
+                                        @Html.ActionLink("Editar", "Insert", new { idContato = item.Id });
+                                    }
+                                }
+                                else if (User.UsuarioLogado().Perfil == SecretariaControl.WebApp.Models.Perfil.Gerente)
+                                {
+                                    contactList = SecretariaControl.WebApp.Models.ContatoFactory.GetContatosByIdGerente(User.UsuarioLogado().Id);
+                                    if (!contactList.Where(c => c.Id == item.Id).IsNullOrEmpty())
+                                    {
+                                        @Html.ActionLink("Deletar", "DeletarContato", new { idContato = item.Id });
+                                        @:  |  
+                                        @Html.ActionLink("Editar", "Insert", new { idContato = item.Id });
+                                    }
+                                }
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+    </div>
+
+</div>

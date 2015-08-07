@@ -1,0 +1,351 @@
+﻿html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.navbar {
+  vertical-align: middle;
+  border-radius: 0;
+  background-color: #3e4651;
+  border-color: #3e4651;
+  border: 0;
+  height: 60px;
+}
+.navbar .container-fluid {
+  height: 100%;
+}
+.navbar .navbar-header {
+  line-height: 2em;
+  /*border-right:3px dashed @flat-burnt-red;*/
+  height: 100%;
+}
+.navbar .navbar-header h2 {
+  margin: 0;
+}
+.navbar .navbar-header .brand-name {
+  color: white;
+  font-weight: 600;
+}
+.navbar .navbar-header .brand-name .brand-name-2nd-color {
+  color: #fc6042;
+}
+.navbar .navbar-nav a.dropdown-toggle {
+  /*border-left:3px dashed @flat-burnt-red;*/
+  padding: 5px 10px;
+  height: 100%;
+}
+.navbar .navbar-nav a.dropdown-toggle img {
+  width: 48px;
+  height: 48px;
+  border: 5px solid #2cc990;
+}
+.navbar .navbar-nav a.dropdown-toggle:hover,
+.navbar .navbar-nav a.dropdown-toggle:focus,
+.navbar .navbar-nav a.dropdown-toggle:active,
+.navbar .navbar-nav a.dropdown-toggle[aria-expanded="true"] {
+  background-color: #3e4651;
+  color: #fc6042;
+}
+.navbar .navbar-nav a.dropdown-toggle:hover img,
+.navbar .navbar-nav a.dropdown-toggle:focus img,
+.navbar .navbar-nav a.dropdown-toggle:active img,
+.navbar .navbar-nav a.dropdown-toggle[aria-expanded="true"] img {
+  border: 0 solid #2cc990;
+}
+.navbar .navbar-nav .dropdown-menu {
+  background-color: rgba(62, 70, 81, 0.75);
+}
+.navbar .nav {
+  height: 100%;
+}
+.navbar .nav li {
+  height: 100%;
+}
+.navbar .nav li a {
+  height: 100%;
+  color: #eeeeee;
+  font-size: 20px;
+  /*font-weight: 400;*/
+  vertical-align: middle;
+  line-height: 1.8em;
+}
+.navbar .nav li a:hover,
+.navbar .nav li a:focus,
+.navbar .nav li a:active {
+  background-color: #fc6042;
+  color: #eeeeee;
+}
+footer {
+  text-align: center;
+  color: #777777;
+}
+textarea {
+  resize: none;
+}
+.no-content {
+  background-color: #ebedf0;
+  border-radius: 6px;
+  width: 100%;
+  height: 600px;
+  padding: 160px 10px;
+}
+.no-content p {
+  color: #8692a2;
+  font-size: 60px;
+  font-weight: 600;
+  text-align: center;
+}
+.card-container {
+  padding: 20px;
+}
+.card-container .card {
+  border-radius: 6px;
+  padding: 15px 0;
+  margin: 10px 0;
+  min-height: 125px;
+  display: block;
+  overflow: auto;
+  cursor: pointer;
+  background-color: #e2eef9;
+  color: #777777;
+}
+.card-container .card .font-lg-title {
+  font-size: 40px;
+  font-weight: 600;
+}
+.card-container .card .font-sm-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.card-container .card .font-md-content {
+  font-size: 16px;
+  font-weight: 400;
+}
+.card-container .card:hover {
+  background-color: #b8d6ef;
+  box-shadow: 5px 5px 10px #8692a2;
+}
+.card-container .card .img-md-fluid {
+  width: 100%;
+  height: auto;
+}
+.empty-card-container {
+  padding: 20px;
+  border-radius: 6px;
+  padding: 15px 0;
+  margin: 10px 0;
+  min-height: 125px;
+  display: block;
+  overflow: auto;
+  cursor: pointer;
+  background-color: #e8eff4;
+  color: #777777;
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+  min-height: 300px;
+}
+/*
+    CLASSES GENÉRICAS PARA CRIAR TRANSIÇÃO DE QUALQUER COISA
+*/
+.animate-all-slow {
+  -webkit-transition: all 1s linear;
+  -o-transition: all 1s linear;
+  -moz-transition: all 1s linear;
+  -ms-transition: all 1s linear;
+  -kthtml-transition: all 1s linear;
+  transition: all 1s linear;
+}
+.animate-all-normal {
+  -webkit-transition: all .6s linear;
+  -o-transition: all .6s linear;
+  -moz-transition: all .6s linear;
+  -ms-transition: all .6s linear;
+  -kthtml-transition: all .6s linear;
+  transition: all .6s linear;
+}
+.animate-all-fast {
+  -webkit-transition: all .3s linear;
+  -o-transition: all .3s linear;
+  -moz-transition: all .3s linear;
+  -ms-transition: all .3s linear;
+  -kthtml-transition: all .3s linear;
+  transition: all .3s linear;
+}
+.login-form-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.login-form-bg .login-form-bg-image {
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -40px;
+  bottom: -40px;
+  width: auto;
+  height: auto;
+  /*background-image: url(http://cdn2.hubspot.net/hub/53/file-390546474-jpg/laptop-typing.jpg);*/
+  background-image: url('/Images/login-cover.jpg');
+  background-size: cover;
+  -webkit-filter: blur(5px);
+  z-index: 0;
+}
+.login-form {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0;
+}
+.login-form .login-form-container {
+  width: 80%;
+  height: 100%;
+  overflow: auto;
+  margin: 0 auto;
+  padding: 200px 0;
+}
+.login-form .login-form-container .login-title {
+  text-align: center;
+  font-size: 52px;
+  color: #dbe1e5;
+}
+.login-form .login-form-container .login-title .login-title-2nd-color {
+  color: #fc6042;
+}
+.login-form .login-form-container .login-title h1 {
+  padding: 0;
+  vertical-align: middle;
+  line-height: 4.8em;
+  font-weight: 600;
+}
+.login-form .login-form-container form {
+  margin: 30px auto;
+  width: 60%;
+  padding: 0 10px;
+  background-color: rgba(219, 225, 229, 0.4);
+  border-radius: 6px;
+  line-height: 6em;
+  overflow: auto;
+}
+.login-form .login-form-container form h2 {
+  margin-bottom: 0;
+  color: #3e4651;
+  font-weight: 600;
+}
+.login-form .login-form-container form hr {
+  margin-top: 10px;
+}
+.login-form .login-form-container form .btn {
+  font-size: 24px;
+  background-color: #fc6042;
+  border-color: #fc6042;
+}
+.login-form .login-form-container form .btn:hover {
+  background-color: #fb3610;
+  border-color: #fb3610;
+}
+.login-form .login-form-container form .input-group {
+  margin: 15px auto;
+}
+.home-page-title .btn-group {
+  margin-top: 20px;
+}
+.home-page-title hr {
+  margin: 5px 0;
+}
+.secretary-selection-page {
+  height: 100%;
+}
+.secretary-selection-page .secretary-profile,
+.secretary-selection-page .secretary-list {
+  height: 600px;
+}
+.secretary-selection-page .secretary-profile {
+  background-color: #ebedf0;
+  border-radius: 6px;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+}
+.secretary-selection-page .secretary-profile .secretary-info {
+  width: 100%;
+  height: 88%;
+}
+.secretary-selection-page .secretary-profile .secretary-info img {
+  width: 300px;
+  height: 300px;
+  margin: 15px auto;
+}
+.secretary-selection-page .secretary-profile .secretary-info h2 {
+  font-size: 36px;
+}
+.secretary-selection-page .secretary-profile .secretary-info .warning {
+  padding: 5px 10px;
+  background-color: #fdcb73;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.secretary-selection-page .secretary-profile .btn-lg {
+  font-size: 22px;
+}
+.secretary-selection-page .secretary-list {
+  overflow-y: scroll;
+  padding: 0 20px;
+}
+.secretary-selection-page .secretary-list ul li {
+  cursor: pointer;
+  line-height: 5em;
+  vertical-align: middle;
+}
+.secretary-selection-page .secretary-list ul li a {
+  padding: 2px 2px;
+}
+.secretary-selection-page .secretary-list ul li img {
+  width: 60px;
+  height: 60px;
+  margin-right: 10px;
+}
+.secretary-selection-page .secretary-list ul li:hover {
+  background-color: #b8d6ef;
+}
+.secretary-selection-page .secretary-list ul li.secretary-selected {
+  background-color: #4fd9a7;
+  color: white;
+  cursor: default;
+}
+.secretary-selection-page .secretary-list ul li.secretary-selected:hover {
+  background-color: #4fd9a7;
+}
+.compromisso-form .contact-selection select,
+.compromisso-form .contact-selection .selected-contacts-list {
+  width: 60%;
+}
+.compromisso-form .contact-selection select {
+  margin-right: 10px;
+}
+.compromisso-form .contact-selection .selected-contacts-list {
+  margin: 10px 0;
+  vertical-align: middle;
+}
+.compromisso-form .contact-selection .selected-contacts-list .badge {
+  border-radius: 4px;
+  background-color: #fc6042;
+  font-size: 12px;
+  line-height: 1em;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.compromisso-form .contact-selection .selected-contacts-list .badge .btn {
+  margin-left: 2px;
+  border-radius: 10px;
+  padding: 3px 4px;
+  font-size: 8px;
+  line-height: 1em;
+  vertical-align: middle;
+  border: none;
+}
+.compromisso-form .contact-selection .selected-contacts-list .badge .btn .glyphicon {
+  padding-left: 1px;
+}
+/*# sourceMappingURL=style.css.map */

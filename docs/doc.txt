@@ -1,0 +1,22 @@
+O Sistema:
+
+Gerentes possui Secretarias que controla a agenda de compromisso e os telefones de contato.
+Uma secretária pode gerenciar a agenda de vários gerentes...
+Os contatos telefonicos podem ser compartilhados porém a agenda não.
+
+
+//
+// Considerações
+// - Usuários: <nome_do_usuário>
+// - Entidades: [nome_da_entidade]
+//-----------------------------------------------
+
+Um <admin> poderá cadastrar um ou mais <gerentes>.
+O <admin> pode cadastrar uma <secretaria>.
+Um <gerente> possui uma e somente uma [agenda].
+Um <gerente> possui uma e somente uma <Secretaria>
+Um <gerente> pode gerir sua [agenda].
+Um <gerente> pode associar uma <Secretaria> a sua [agenda].
+Uma <secretaria> pode gerir uma [agenda] associada a sua conta.
+Uma <secretaria> pode gerir uma ou mais [agendas]
+Uma [agenda] esta associada a um e somente um <gerente>

@@ -1,0 +1,77 @@
+﻿@model CompromissoViewModel
+
+@{
+    ViewBag.Title = "Compromisso";
+    Layout = "~/Views/_Layout.cshtml";
+
+    var formActionPath = string.Format("/Agenda/{0}/Compromisso/{1}", Model.Compromisso.IdGerente, (Model.Compromisso.Id > 0 ? Model.Compromisso.Id.ToString() : ""));
+}
+
+<h2>Cadastro de Compromisso</h2>
+<hr />
+
+<form action="@formActionPath" method="post">
+    <div class="row compromisso-form">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Descrição</label>
+                <textarea class="form-control" rows="3" name="compromisso.descricao" placeholder="Nome ou descriação do compromisso" required>@Model.Compromisso.Descricao</textarea>
+            </div>
+            <div class="form-group">
+                <label>Data</label>
+                <input type="datetime-local"
+                       class="form-control"
+                       required
+                       name="compromisso.dataCompromisso"
+                       min="@DateTime.Now.ToString(@"yyyy-MM-dd\THH:mm")"
+                       value="@((Model.Compromisso.Id > 0 ? Model.Compromisso.DataCompromisso : DateTime.Now).ToString(@"yyyy-MM-dd\THH:mm"))">
+            </div>
+            <div class="form-group">
+                <label>Local</label>
+                <input type="text" class="form-control" placeholder="Local do compromisso" name="compromisso.local" value="@Model.Compromisso.Local" required>
+            </div>
+        </div>
+        <div class="col-md-6 contact-selection">
+            <div class="form-group">
+                <h4>Lista de Contatos</h4>
+                <select class="form-control pull-left" name="contatosSelecionados">
+                    
+                    @foreach (var contato in Model.Contatos)
+                    {
+                        if (!Model.ContatosSelecionados.Any(id => id == contato.Id))
+                        {
+                            <option value="@contato.Id">@contato.Descricao</option>
+                        }
+                    }
+                </select>
+                <button type="submit" class="btn btn-primary pull-left">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    Adicionar Contato
+                </button>
+            </div>
+
+            <div class="selected-contacts-list pull-left">
+                @foreach (var contatoId in Model.ContatosSelecionados)
+                {
+                    <input type="text" class="form-control hide" name="contatosSelecionados" value="@contatoId">
+                    <p class="pull-left">
+                        <span class="badge">
+                            @Model.ContatosDic[contatoId].Descricao
+                            <button type="submit" name="removerContato" value="@contatoId" class="btn btn-sm btn-default">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    <button type="submit" name="salvarCompromisso" value="true" class="btn btn-success">Salvar</button>
+</form>
+
+

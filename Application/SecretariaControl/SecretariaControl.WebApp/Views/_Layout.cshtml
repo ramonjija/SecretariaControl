@@ -1,0 +1,81 @@
+﻿@{
+    var usuarioLogado = User.UsuarioLogado();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/applicationStyles/style.min.css" rel="stylesheet" />
+    @*<link href="~/Content/font-awesome.min.css" rel="stylesheet" />*@
+    @RenderSection("Styles", false)
+
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#home">
+                    <h2 class="brand-name">Secretária<span class="brand-name-2nd-color">Control</span></h2>
+                </a>
+            </div>
+
+            <ul class="nav navbar-nav">
+                @*<li class="active"><a href="#Agendas">Agendas</a></li>*@
+                
+                @switch (usuarioLogado.Perfil)
+                {
+                    case SecretariaControl.WebApp.Models.Perfil.Administrador:
+                        <li><a href="~/Home">Gerentes</a></li>
+                        <li><a href="#">Secretarias</a></li>
+                        break;
+
+                    case SecretariaControl.WebApp.Models.Perfil.Gerente:
+                        <li><a href="~/Agenda/Index/@usuarioLogado.Id">Minha Agenda</a></li>
+                        <li><a href="~/Contato/List">Contatos</a></li>
+                        break;
+
+                    case SecretariaControl.WebApp.Models.Perfil.Secretaria:
+                    default:
+                        <li><a href="~/Home">Gerentes</a></li>
+                        <li><a href="~/Contato/List">Contatos</a></li>
+                        break;
+                }
+               
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        <img src="@usuarioLogado.Foto" alt="" class="img-circle animate-all-fast" />
+                        @usuarioLogado.Nome
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Conta</a></li>
+                        <li class="divider"></li>
+                        <li><a href="/account/logout">Sair</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+    <footer>
+        <hr />
+        <span>powered by The One Who Knocks</span>
+    </footer>   
+
+    <script src="~/Scripts/jquery-2.1.4.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>

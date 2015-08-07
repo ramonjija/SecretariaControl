@@ -1,0 +1,50 @@
+.card-container {
+  padding: 20px;
+}
+.card-container .card {
+  border-radius: 6px;
+  padding: 15px 0;
+  margin: 10px 0;
+  min-height: 125px;
+  display: block;
+  overflow: auto;
+  cursor: pointer;
+  background-color: #e2eef9;
+  color: #777777;
+}
+.card-container .card .font-lg-title {
+  font-size: 40px;
+  font-weight: 600;
+}
+.card-container .card .font-sm-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.card-container .card .font-md-content {
+  font-size: 16px;
+  font-weight: 400;
+}
+.card-container .card:hover {
+  background-color: #b8d6ef;
+  box-shadow: 5px 5px 10px #8692a2;
+}
+.card-container .card .img-md-fluid {
+  width: 100%;
+  height: auto;
+}
+.empty-card-container {
+  padding: 20px;
+  border-radius: 6px;
+  padding: 15px 0;
+  margin: 10px 0;
+  min-height: 125px;
+  display: block;
+  overflow: auto;
+  cursor: pointer;
+  background-color: #e8eff4;
+  color: #777777;
+  font-size: 40px;
+  font-weight: 600;
+  text-align: center;
+  min-height: 300px;
+}

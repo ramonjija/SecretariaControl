@@ -1,0 +1,93 @@
+﻿@import "variables";
+
+.login-form-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    .login-form-bg-image {
+        position: absolute;
+        top: -20px;
+        left: -20px;
+        right: -40px;
+        bottom: -40px;
+        width: auto;
+        height: auto;
+        /*background-image: url(http://cdn2.hubspot.net/hub/53/file-390546474-jpg/laptop-typing.jpg);*/
+        background-image: url('/Images/login-cover.jpg');
+        background-size: cover;
+        -webkit-filter: blur(5px);
+        z-index: 0;
+    }
+}
+
+.login-form {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+
+    .login-form-container {
+        width: 80%;
+        height: 100%;
+        overflow: auto;
+        margin: 0 auto;
+        padding: 200px 0;
+
+
+        .login-title {
+            text-align: center;
+            font-size: 52px;
+            color: @gray-solid;
+
+            .login-title-2nd-color {
+                color: @flat-burnt-red;
+            }
+
+            h1 {
+                padding: 0;
+                vertical-align: middle;
+                line-height: 4.8em;
+                font-weight: 600;
+            }
+        }
+
+
+
+        form {
+            margin: 30px auto;
+            width: 60%;
+            padding: 0 10px;
+            background-color: fade(@gray-solid, 40%);
+            border-radius: 6px;
+            line-height: 6em;
+            overflow: auto;
+
+            h2 {
+                margin-bottom: 0;
+                color: @flat-gray-dark;
+                font-weight: 600;
+            }
+
+            hr {
+                margin-top: 10px;
+            }
+
+
+            .btn {
+                font-size: 24px;
+                background-color: @flat-burnt-red;
+                border-color: @flat-burnt-red;
+
+                &:hover {
+                    background-color: @flat-burnt-redder;
+                    border-color: @flat-burnt-redder;
+                }
+            }
+
+            .input-group {
+                margin: 15px auto;
+            }
+        }
+    }
+}

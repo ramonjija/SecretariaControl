@@ -1,0 +1,101 @@
+﻿<!--model SecretariaControl.WebApp.Models.ViewModels.CompromissoViewModel-->
+@model SecretariaControl.WebApp.Models.Contato
+@{
+    ViewBag.Title = "Cadastro de Contato";
+    Layout = "~/Views/_Layout.cshtml";
+}
+
+@section Styles {
+    @*INCLUIR CSS AQUI*@
+    <link href="~/Content/applicationStyles/includes/cadastroContato.css" rel="stylesheet" />
+}
+<div class="container cadastro-contato">
+    <h2 class="jumbotron">Cadastro de Contato</h2>
+
+    <div class="container form-contato">
+        <form role="form" action="/Contato/CadastrarContato" method="post">
+            <div class="form-group" hidden>
+                <label for="contato">Id Contato:</label>
+                <input type="number" class="form-control" name="idContato" value="@Model.Id">
+            </div>
+            <div class="form-group">
+                <label for="text">Descrição do Contato:</label>
+                <input type="text" class="form-control" name="descricao" placeholder="Descricao" value="@Model.Descricao">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" name="email" placeholder="Email" value="@Model.Email">
+            </div>
+            <div class="form-group">
+                <label for="tel">Telefone:</label>
+                <input type="tel" class="form-control" name="telefone" placeholder="Telefone" value="@Model.Telefone">
+            </div>
+            @{
+                if (User.UsuarioLogado().Perfil == SecretariaControl.WebApp.Models.Perfil.Secretaria)
+                {
+                    var gerentes = SecretariaControl.WebApp.Models.GerenteFactory.GetGerenteSec(User.UsuarioLogado().Id);
+                    <div class="form-group">
+                        <label for="gerente">Gerente:</label>
+                        <br />
+                       
+                    @if (Model.IdGerente != null && Model.IdGerente > 0)
+                    {
+                        <select name="IdGerente">
+                                <option value="@Model.IdGerente">@gerentes.Where(g => g.Id == Model.IdGerente).FirstOrDefault().Nome</option>
+                        </select>
+                    }
+                    else
+                    {
+                        <select name="IdGerente">
+                            @foreach (var gerente in gerentes)
+                            {
+                                <option value="@gerente.Id">@gerente.Nome</option>
+                            }
+                        </select>
+                    }
+                    </div>
+                }
+                else if (User.UsuarioLogado().Perfil == SecretariaControl.WebApp.Models.Perfil.Gerente)
+                {
+                    <div class="form-group" hidden>
+                        <label for="gerente">Gerente:</label>
+                        <br />
+                        <select name="IdGerente">
+                            <option value="@User.UsuarioLogado().Id">@User.UsuarioLogado().Nome</option>
+                        </select>
+                    </div>
+                }
+
+            }
+            <button type="submit" id="btnSalvaContato" class="btn btn-default">Salvar</button>
+        </form>
+    </div>
+
+
+    <!--<button type="submit" id="btnSalvaContato" class="btn btn-default">Salvar</button>-->
+    <div id="msgContatoSalvo" class="msgHide"><h4>Contato salvo com sucesso!</h4></div>
+</div>
+
+@section Scripts {
+    @*INCLUIR SCRIPT AQUI*@
+    <!--Script para mockar o cadastro de contato
+    <script>
+        $(document).ready(function () {
+            $('#btnSalvaContato').click(function () {
+                $('#msgContatoSalvo').removeClass('msgShow');
+                var descricao = $('#descricao').val();
+                var email = $('#email').val();
+                var telefone = $('#telefone').val();
+                if ((descricao.length > 0) && (email.length > 0) && (telefone.length > 0)) {
+                    $('#msgContatoSalvo').toggleClass('msgShow');
+                    $('#descricao').val("");
+                    $('#email').val("");
+                    $('#telefone').val("");
+
+                }
+            });
+
+        });
+
+    </script>-->
+}
